@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+   - var AirlineTicket=[{AirlineTicket_passengerName:"Shivani",AirlineTicket_ticketNumber:11200,AirlineTicket_seatNumber:25},{AirlineTicket_passengerName:"Samyuktha",AirlineTicket_ticketNumber:11201,AirlineTicket_seatNumber:26},{AirlineTicket_passengerName:"Lavanya",AirlineTicket_ticketNumber:11202,AirlineTicket_seatNumber:27}]
+  div(class="container-fluid")
+  div(class="row")
+   each f,index in AirlineTicket
+    div(class="col-sm-2" onclick =`buy(${index})`) #{f.AirlineTicket_passengerName}, #{f.AirlineTicket_ticketNumber}, #{f.AirlineTicket_seatNumber}
+    script.
+        function buy(a)
+        {
+            alert(`You purchased Item ${a+1}`)
+        }
