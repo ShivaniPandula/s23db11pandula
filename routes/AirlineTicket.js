@@ -1,9 +1,6 @@
 var express = require('express');
+const airlineTicket_controllers= require('../controllers/AirlineTicket');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('AirlineTicket', { title: 'Search Results AirlineTicket' });
-});
-
+/* GET costumes */
+router.get('/', airlineTicket_controllers.AirlineTicket_view_all_Page );
 module.exports = router;

@@ -29,3 +29,16 @@ exports.AirlineTicket_list = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
    };
+
+// VIEWS
+// Handle a show all view
+exports.AirlineTicket_view_all_Page = async function(req, res) {
+    try{
+    theAirlineTickets = await AirlineTicket.find();
+    res.render('AirlineTicket', { title: 'AirlineTicket Search Results', results: theAirlineTickets });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+   };
