@@ -63,3 +63,15 @@ exports.AirlineTicket_create_post = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
    };
+
+   //New code for Assigment12 for screenshot1
+exports.AirlineTicket_detail = async function (req, res) {
+    console.log("detail" + req.params.id)
+    try {
+        result = await AirlineTicket.findById(req.params.id)
+        res.send(result)
+    } catch (error) {
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+};
