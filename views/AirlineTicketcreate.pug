@@ -3,14 +3,14 @@ extends layout
 block content
   h1= title
   form(id='AirlineTicketForm', action="/resource/AirlineTicket", method="POST")
-    div.form-group
-      label.AirlineTicketAttr(for='passengerName') passengerName
+    div.form-group-create
+      label.AirlineTAttr(for='passengerName') passengerName
       input#passengerName(type='text', name='passengerName')
-    div.form-group
-      label.AirlineTicketAttr(for='ticketNumber') ticketNumber 
+    div.form-group-create
+      label.AirlineTAttr(for='ticketNumber') ticketNumber 
       input#ticketNumber(type='text', name='ticketNumber')
-    div.form-group
-      label.AirlineTicketAttr(for='seatNumber') seatNumber
+    div.form-group-create
+      label.AirlineTAttr(for='seatNumber') seatNumber
       input#seatNumber(type='number', name='seatNumber')
     input(type="submit")
     script.
