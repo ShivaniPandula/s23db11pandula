@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1= title
+  form(id='AirlineTicketForm', action="/resource/AirlineTicket", method="POST")
+    div.form-group
+      label.AirlineTicketAttr(for='passengerName') passengerName
+      input#passengerName(type='text', name='passengerName')
+    div.form-group
+      label.AirlineTicketAttr(for='ticketNumber') ticketNumber 
+      input#ticketNumber(type='text', name='ticketNumber')
+    div.form-group
+      label.AirlineTicketAttr(for='seatNumber') seatNumber
+      input#seatNumber(type='number', name='seatNumber')
+    input(type="submit")
+    script.
+      document.forms['AirlineTicketForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show the user that the form is being submitted
+        fetch(event.target.action, {
+          method: 'POST',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Save succeeded")
+          // TODO handle the body
+        }).catch((error) => {
+          // TODO handle the error
+          alert("Save failed " + error )
+        });
+      });
