@@ -96,3 +96,31 @@ exports.AirlineTicket_update_put = async function(req, res) {
    failed`);
     }
    };
+
+   // Handle AirlineTicket delete on DELETE.
+exports.AirlineTicket_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await AirlineTicket.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+   };
+
+   //New code added for screenshot 6
+   // Handle a show one view with id specified by query
+exports.AirlineTicket_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await AirlineTicket.findById( req.query.id)
+    res.render('AirlineTicketdetail',
+   { title: 'AirlineTicket Details', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };

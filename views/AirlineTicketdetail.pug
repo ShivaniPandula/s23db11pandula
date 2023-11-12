@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+
+  - let AirlineTicketid = toShow._id
+  - let AirlineTicket_passengerName = toShow.passengerName
+  - let AirlineTicketticketNumber = toShow.ticketNumber
+  - let AirlineTicketseatNumber= toShow.seatNumber
+
+  div
+    div.row
+      div(class='AirlineTicketAttr mr-4') AirlineTicket ID is:
+      div #{AirlineTicketid}
+
+    div.row
+      div(class='AirlineTicketAttr mr-4')  PassengerName is:
+      div #{AirlineTicket_passengerName}
+
+    div.row
+      div(class='AirlineTicketAttr mr-4') TicketNumber is:
+      div #{AirlineTicketticketNumber}
+
+    div.row
+      div(class='AirlineTicketAttr mr-4') SeatNumber:
+      div #{AirlineTicketseatNumber}
