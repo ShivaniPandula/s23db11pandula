@@ -11,4 +11,6 @@ router.get('/detail', airlineTicket_controllers.AirlineTicket_view_one_Page);
 router.get('/create', airlineTicket_controllers.AirlineTicket_create_Page);
 /* GET create update page */
 router.get('/update', airlineTicket_controllers.AirlineTicket_update_Page);
+/* GET delete costume page */
+router.get('/delete', airlineTicket_controllers.AirlineTicket_delete_Page);
 module.exports = router;
