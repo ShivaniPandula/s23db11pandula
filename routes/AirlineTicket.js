@@ -9,4 +9,6 @@ router.get('/AirlineTicket/:id', airlineTicket_controllers.AirlineTicket_detail)
 router.get('/detail', airlineTicket_controllers.AirlineTicket_view_one_Page);
 /* GET create costume page */
 router.get('/create', airlineTicket_controllers.AirlineTicket_create_Page);
+/* GET create update page */
+router.get('/update', airlineTicket_controllers.AirlineTicket_update_Page);
 module.exports = router;

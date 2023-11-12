@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  h1= title
+  - let AirlineTicketid = toShow._id
+  - let AirlineTicket_passengerName = toShow.passengerName
+  - let AirlineTicketticketNumber = toShow.ticketNumber
+  - let AirlineTicketseatNumber = toShow.seatNumber
+
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{AirlineTicketid}
+
+  - let actionid = "/resource/AirlineTicket/" + AirlineTicketid
+  form(id='AirlineTicketForm', action= actionid, method="PUT")
+    div.form-group
+      label.AirlineTicketAttr(for='passengerName') passengerName
+      input#passengerName(type='text', name='passengerName', value= passengerName )
+    div.form-group
+      label.AirlineTicketAttr(for='ticketNumber') ticketNumber
+      input#ticketNumber(type='text', name='ticketNumber', value= ticketNumber )
+    div.form-group
+      label.AirlineTicketAttr(for='seatNumber') seatNumber
+      input#seatNumber(type='number', name='seatNumber', value= seatNumber )
+    input(type="submit")
+
+    script.
+      document.forms['AirlineTicketForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that the form is being submitted
+        fetch(event.target.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Update succeeded");
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Update failed " + error );
+        });
+      });
