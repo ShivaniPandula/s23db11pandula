@@ -1,21 +1,33 @@
+//- extends layout
+
+//- block content
+//-   h1= title
+//-   p Welcome to Missouri I am shivani Pandula #{title}
+//-   button(type="button" class="btn btn-secondary" onclick="goFaster()") Press Me
+  
+//-   div#faster Increase the speed 
+//-   script.
+//-     let mph = 20;
+//-     let change = 1;
+//-     function goFaster() {
+//-       mph += change;
+//-       change += 1;
+//-       document.getElementById('faster').textContent = `MPH ${mph} with change ${change}`;
+//-     }
+
+//-     br
+//-   a(href='http://localhost:3000/AirlineTicket') Click Here to Visit AirlineTicket Website
+
+    
 extends layout
 
 block content
-  h1= title
-  p Welcome to Missouri I am shivani Pandula #{title}
-  button(type="button" class="btn btn-secondary" onclick="goFaster()") Press Me
-  
-  div#faster Increase the speed 
-  script.
-    let mph = 20;
-    let change = 1;
-    function goFaster() {
-      mph += change;
-      change += 1;
-      document.getElementById('faster').textContent = `MPH ${mph} with change ${change}`;
-    }
-
+  if (!user)
+    a(href="/login") Login
     br
-  a(href='http://localhost:3000/AirlineTicket') Click Here to Visit AirlineTicket Website
-
-    
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/AirlineTicket") Take me to AirlineTicket
+    br
+    a(href="/logout") Logout
