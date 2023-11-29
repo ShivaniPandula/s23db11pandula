@@ -2,7 +2,8 @@ extends layout
 
 block content
   h1= title
-   - let result = results;
+   a(class="btn btn-success" href="/AirlineTicket/create") Create
+   - let result = results; 
    - var AirlineTicket=[{AirlineTicket_passengerName:"Shivani",AirlineTicket_ticketNumber:11200,AirlineTicket_seatNumber:25},{AirlineTicket_passengerName:"Samyuktha",AirlineTicket_ticketNumber:11201,AirlineTicket_seatNumber:26},{AirlineTicket_passengerName:"Lavanya",AirlineTicket_ticketNumber:11202,AirlineTicket_seatNumber:27}]
   div(class="container-fluid mt-3")
   div(class="row m-1")
@@ -10,6 +11,8 @@ block content
     - let destination = `/AirlineTicket/update?id=${result._id}`
     div(class="col-sm-2" onclick =`buy(${index})`) #{result.passengerName}, #{result.ticketNumber}, #{result.seatNumber}
     button.btn(class="btn-primary ml-1", onclick=`dispatch('${destination}')`) Update
+    a(class="btn btn-danger" href=`/AirlineTicket/delete?id=${result._id}`) Delete
+    a(class="btn btn-dark" href=`/AirlineTicket/detail?id=${result._id}`) Details
     script.
         function buy(a)
         {

@@ -14,12 +14,12 @@ router.get('/', airlineTicket_controllers.AirlineTicket_view_all_Page );
 // GET request for one airlineTicket.
 router.get('/AirlineTicket/:id', airlineTicket_controllers.AirlineTicket_detail);
 /* GET detail airlineTicket page */
-router.get('/detail', airlineTicket_controllers.AirlineTicket_view_one_Page);
+router.get('/detail',secured, airlineTicket_controllers.AirlineTicket_view_one_Page);
 /* GET create airlineTicket page */
-router.get('/create', airlineTicket_controllers.AirlineTicket_create_Page);
+router.get('/create',secured, airlineTicket_controllers.AirlineTicket_create_Page);
 /* GET create update page */
 router.get('/update',secured, airlineTicket_controllers.AirlineTicket_update_Page);
 /* GET delete airlineTicket page */
-router.get('/delete', airlineTicket_controllers.AirlineTicket_delete_Page);
+router.get('/delete',secured, airlineTicket_controllers.AirlineTicket_delete_Page);
 
 module.exports = router;
